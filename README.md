@@ -1,5 +1,7 @@
 # ShoppingSite
 
+This is the simple angular shopping site which has filter by brands and category. It uses dummyjson api endpoints.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.5.
 
 ## Development server
