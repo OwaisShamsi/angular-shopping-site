@@ -34,10 +34,6 @@ export class HomeComponent implements OnInit, OnDestroy, OnChanges {
   @Input() showLoader: boolean = false;
   @ViewChild('content') widgetsContent!: ElementRef;
   datasource: any[] = [];
-  dataSource: Observable<MProduct[]> = this.productService.getPaginateProduct(
-    10,
-    0
-  );
 
   constructor(
     private productService: ProductService,
@@ -68,6 +64,9 @@ export class HomeComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   // Code to search in same component
+
+  pageSize: number = 10; // Initial page size
+  currentPage: number = 0; // Initial page index
 
   selectionChanged(event: MatOptionSelectionChange) {
     if (event.isUserInput === true) {
@@ -109,10 +108,12 @@ export class HomeComponent implements OnInit, OnDestroy, OnChanges {
     this.productService.getProducts().subscribe({
       next: (products) => {
         (this.products = products),
-          (this.searchProduct = products),
+          (this.searchProduct = this.products.slice(0,9)),
           (this.brands = products);
         this.showLoader = false;
+        
         this.getAllBrands();
+        // this.onPaginate();
       },
       error: (err) => {
         this.errorMessage = err.error.message;
@@ -134,12 +135,15 @@ export class HomeComponent implements OnInit, OnDestroy, OnChanges {
     this.widgetsContent.nativeElement.scrollLeft += 400;
   }
 
-  onPaginate(event: PageEvent) {
-    console.log(event);
-    let page = event.pageIndex;
-    page = page;
-    console.log(page);
+  onPaginate(event: PageEvent): void {
+    this.currentPage = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.updateDisplayedProducts();
+  }
 
-    this.dataSource = this.productService.getPaginateProduct(10, page);
+  private updateDisplayedProducts(): void {
+    const startIndex = this.currentPage * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+    this.searchProduct = this.products.slice(startIndex, endIndex);
   }
 }

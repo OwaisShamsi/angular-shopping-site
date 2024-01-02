@@ -14,11 +14,7 @@
         <mat-label>Select Brand</mat-label>
         <mat-select>
           <mat-option (click)="onResetFilter()">--</mat-option>
-          <mat-option
-            *ngFor="let brand of filterBrand"
-            [value]="brand"
-            (onSelectionChange)="selectionChanged($event)"
-          >
+          <mat-option *ngFor="let brand of filterBrand" [value]="brand" (onSelectionChange)="selectionChanged($event)">
             {{ brand }}
           </mat-option>
         </mat-select>
@@ -39,24 +35,13 @@
           >arrow_left</span
         > -->
         <div class="row content" #content>
-          <mat-card
-            [routerLink]="['/products', product.id]"
-            class="product-card"
-            *ngFor="let product of searchProduct"
-          >
-            <img
-              mat-card-image
-              src="{{ product.thumbnail }}"
-              title="{{ product.title }}"
-              alt="{{ product.title }}"
-            />
+          <mat-card [routerLink]="['/products', product.id]" class="product-card" *ngFor="let product of searchProduct">
+            <img mat-card-image src="{{ product.thumbnail }}" title="{{ product.title }}" alt="{{ product.title }}" />
             <mat-card-header>
               <mat-card-title>{{ product.title }}</mat-card-title>
-              <mat-card-subtitle
-                ><strong>{{
+              <mat-card-subtitle><strong>{{
                   product.price | currency : "USD" : "symbol"
-                }}</strong></mat-card-subtitle
-              >
+                  }}</strong></mat-card-subtitle>
             </mat-card-header>
           </mat-card>
         </div>
@@ -67,14 +52,11 @@
           >arrow_right</span
         > -->
       </div>
+      <mat-paginator (page)="onPaginate($event)" pageSize="10" [length]="products.length"
+        showFirstLastButtons></mat-paginator>
     </div>
   </div>
 </div>
-<mat-paginator
-  (page)="onPaginate($event)"
-  pageSize="10"
-  [length]="products.length"
-  showFirstLastButtons
-></mat-paginator>
+
 
 <!-- <app-footer [isLoading]="loading"></app-footer> -->
