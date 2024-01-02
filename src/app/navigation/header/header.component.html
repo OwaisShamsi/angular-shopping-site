@@ -1,0 +1,51 @@
+<mat-toolbar color="primary">
+  <div fxHide.gt-xs>
+    <button mat-icon-button (click)="onToggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+  <div>
+    <a routerLink="/home">Smart Buy</a>
+  </div>
+  <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+    <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+      <li>
+        <a (click)="onAddProduct()" style="cursor: pointer" title="Add Product"
+          >Add Product</a
+        >
+      </li>
+      <li>
+        <a
+          (click)="onUpdateProduct()"
+          style="cursor: pointer"
+          title="Update Product"
+        >
+          Update Product
+        </a>
+      </li>
+      <li>
+        <a
+          routerLink="/category"
+          style="cursor: pointer"
+          title="Category"
+          routerLinkActive="active"
+        >
+          Category
+        </a>
+      </li>
+      <li>
+        <form>
+          <div class="d-flex">
+            <mat-form-field appearance="fill">
+              <input
+                matInput
+                placeholder="Search"
+                (input)="searchUpdated($event)"
+              />
+            </mat-form-field>
+          </div>
+        </form>
+      </li>
+    </ul>
+  </div>
+</mat-toolbar>

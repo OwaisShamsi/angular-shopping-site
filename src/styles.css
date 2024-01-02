@@ -1,0 +1,88 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+  margin: 0;
+  height: 100%;
+}
+
+.product-card {
+  max-width: 300px;
+  margin: 5px;
+  padding-bottom: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  height: auto;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+  border: 1px solid black;
+  z-index: 1;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+}
+
+img {
+  height: 200px;
+  width: auto;
+  object-fit: contain;
+  margin: 0px;
+}
+
+c-carousel-item {
+  overflow: hidden;
+}
+
+c-carousel-item img {
+  height: 500px;
+  transition: transform 0.5s ease;
+}
+
+c-carousel-item img:hover {
+  transform: scale(1.1);
+}
+mat-card-title {
+  font-size: smaller;
+}
+
+.heading {
+  text-align: center;
+  margin: 2%;
+}
+
+.navigation-items {
+  display: flex;
+  align-items: center;
+}
+.filter {
+  float: right;
+  width: 10vw;
+  margin-right: 5vw;
+  text-align: left;
+}
+
+@media only screen and (max-width: 1850px) {
+  .content {
+    /* max-width: 300px; */
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+  }
+  .filter {
+    float: none;
+    width: auto;
+    margin: 0;
+  }
+}
+
+mat-form-field {
+  margin-top: 25px;
+}
+
+mat-dialog-actions,
+button {
+  flex: 1;
+}

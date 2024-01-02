@@ -1,0 +1,27 @@
+<div class="container">
+  <mat-nav-list>
+    <a mat-list-item routerLink="/home" (click)="onSidenavClose()">
+      <mat-icon>home</mat-icon> <span class="nav-caption">Home</span>
+    </a>
+    <a mat-list-item routerLink="/category" (click)="onSidenavClose()">
+      <mat-icon>category</mat-icon>
+      <span class="nav-caption">Category</span>
+    </a>
+    <a mat-list-item (click)="onAddProduct()">
+      <mat-icon>add</mat-icon>
+      <span class="nav-caption">Add Product</span>
+    </a>
+    <a mat-list-item (click)="onUpdateProduct()">
+      <mat-icon>update</mat-icon>
+      <span class="nav-caption">Update Product</span>
+    </a>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        placeholder="Search"
+        required
+        (keydown.enter)="searchUpdated($event)"
+      />
+    </mat-form-field>
+  </mat-nav-list>
+</div>

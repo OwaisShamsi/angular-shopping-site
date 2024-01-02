@@ -1,0 +1,80 @@
+<div class="whole-content">
+  <div *ngIf="showLoader && errorMessage == null" class="loading">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div *ngIf="errorMessage != null" style="height: 100%">
+    <div class="row" style="text-align: center">
+      <h3>{{ errorMessage }}</h3>
+    </div>
+  </div>
+  <div *ngIf="!showLoader">
+    <div class="row filter">
+      <h4>Filter by brand</h4>
+      <mat-form-field appearance="fill">
+        <mat-label>Select Brand</mat-label>
+        <mat-select>
+          <mat-option (click)="onResetFilter()">--</mat-option>
+          <mat-option
+            *ngFor="let brand of filterBrand"
+            [value]="brand"
+            (onSelectionChange)="selectionChanged($event)"
+          >
+            {{ brand }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!-- <button class="btn btn-danger" (click)="onResetFilter()">
+      Reset Brand
+    </button> -->
+    </div>
+    <div class="container products">
+      <div class="row heading">
+        <h1>{{ pageTitle }}</h1>
+      </div>
+      <div class="cover">
+        <!-- <span
+          class="material-icons left"
+          style="cursor: pointer"
+          (click)="leftScroll()"
+          >arrow_left</span
+        > -->
+        <div class="row content" #content>
+          <mat-card
+            [routerLink]="['/products', product.id]"
+            class="product-card"
+            *ngFor="let product of searchProduct"
+          >
+            <img
+              mat-card-image
+              src="{{ product.thumbnail }}"
+              title="{{ product.title }}"
+              alt="{{ product.title }}"
+            />
+            <mat-card-header>
+              <mat-card-title>{{ product.title }}</mat-card-title>
+              <mat-card-subtitle
+                ><strong>{{
+                  product.price | currency : "USD" : "symbol"
+                }}</strong></mat-card-subtitle
+              >
+            </mat-card-header>
+          </mat-card>
+        </div>
+        <!-- <span
+          class="material-icons right"
+          style="cursor: pointer"
+          (click)="rightScroll()"
+          >arrow_right</span
+        > -->
+      </div>
+    </div>
+  </div>
+</div>
+<mat-paginator
+  (page)="onPaginate($event)"
+  pageSize="10"
+  [length]="products.length"
+  showFirstLastButtons
+></mat-paginator>
+
+<!-- <app-footer [isLoading]="loading"></app-footer> -->

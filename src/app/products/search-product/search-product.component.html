@@ -1,0 +1,29 @@
+<div *ngIf="showLoader && errorMessage == null" class="loading">
+  <mat-spinner></mat-spinner>
+</div>
+<div *ngIf="errorMessage != null">
+  <div class="row" style="text-align: center">
+    <h3>{{ errorMessage }}</h3>
+  </div>
+</div>
+<div *ngIf="!showLoader" class="row heading">
+  <h1>{{ pageTitle }}</h1>
+  <div class="row content">
+    <mat-card
+      [routerLink]="['/products', product.id]"
+      class="product-card"
+      *ngFor="let product of searchProduct"
+    >
+      <img
+        mat-card-image
+        src="{{ product.thumbnail }}"
+        title="{{ product.title }}"
+        alt="{{ product.title }}"
+      />
+      <mat-card-header>
+        <mat-card-title>{{ product.title }}</mat-card-title>
+        <mat-card-subtitle>{{ product.category }}</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+  </div>
+</div>

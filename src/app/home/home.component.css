@@ -1,0 +1,39 @@
+/* .content {
+  width: auto;
+  padding: 30px;
+  height: auto;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  margin: 20px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.content::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.product-card {
+  height: 400px;
+  margin: 1px 10px;
+  overflow: hidden;
+}
+
+.cover {
+  padding: 0px 30px;
+  position: relative;
+}
+.left {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.right {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+} */

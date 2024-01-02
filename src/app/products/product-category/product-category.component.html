@@ -1,0 +1,15 @@
+<div class="container">
+  <mat-chip-listbox aria-label="Fish selection">
+    <mat-chip-option
+      *ngFor="let category of category"
+      (selectionChange)="selectionChanged($event)"
+      >{{ category }}</mat-chip-option
+    >
+  </mat-chip-listbox>
+</div>
+<app-home
+  [pageTitle]="pageTitle"
+  [products]="searchProduct"
+  [searchProduct]="searchProduct"
+  [showLoader]="showLoader"
+></app-home>
