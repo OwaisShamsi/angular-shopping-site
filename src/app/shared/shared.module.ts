@@ -7,7 +7,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatListModule } from '@angular/material/list';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -20,17 +19,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { StarComponent } from './star/star.component';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [StarComponent],
   imports: [CommonModule],
   exports: [
     StarComponent,
-    FlexLayoutModule,
     CarouselModule,
     ReactiveFormsModule,
-    Ng2SearchPipeModule,
     CommonModule,
     FormsModule,
 
